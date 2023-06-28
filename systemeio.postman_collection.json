@@ -1,0 +1,519 @@
+{
+	"info": {
+		"_postman_id": "74d8a9a6-d2ff-469f-ac5a-d8ed4ddc87c8",
+		"name": "systemeio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "test",
+			"item": [
+				{
+					"name": "calculation",
+					"item": [
+						{
+							"name": "taxes",
+							"item": [
+								{
+									"name": "germany",
+									"item": [
+										{
+											"name": "germany-without-coupon",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"product\": \"1\",\n    \"count\": \"1\",\n    \"taxNumber\": \"DE123456789\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "localhost/api/calculation",
+													"host": [
+														"localhost"
+													],
+													"path": [
+														"api",
+														"calculation"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "germany-coupon(-6%)",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"product\": \"1\",\n    \"count\": \"1\",\n    \"taxNumber\": \"DE123456789\",\n    \"couponCode\": \"G25\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "localhost/api/calculation",
+													"host": [
+														"localhost"
+													],
+													"path": [
+														"api",
+														"calculation"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "germany-coupon(-5 euro)",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"product\": \"1\",\n    \"count\": \"1\",\n    \"taxNumber\": \"DE123456789\",\n    \"couponCode\": \"D15\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "localhost/api/calculation",
+													"host": [
+														"localhost"
+													],
+													"path": [
+														"api",
+														"calculation"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "italy",
+									"item": [
+										{
+											"name": "italy-without-coupon",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"product\": \"1\",\n    \"count\": \"1\",\n    \"taxNumber\": \"IT12345678911\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "localhost/api/calculation",
+													"host": [
+														"localhost"
+													],
+													"path": [
+														"api",
+														"calculation"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "italy-coupon(-6%)",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"product\": \"1\",\n    \"count\": \"1\",\n    \"taxNumber\": \"IT12345678911\",\n    \"couponCode\": \"G25\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "localhost/api/calculation",
+													"host": [
+														"localhost"
+													],
+													"path": [
+														"api",
+														"calculation"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "italy-coupon(-5 euro)",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"product\": \"1\",\n    \"count\": \"1\",\n    \"taxNumber\": \"IT12345678911\",\n    \"couponCode\": \"D15\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "localhost/api/calculation",
+													"host": [
+														"localhost"
+													],
+													"path": [
+														"api",
+														"calculation"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "greece",
+									"item": [
+										{
+											"name": "greece-without-coupon",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"product\": \"1\",\n    \"count\": \"1\",\n    \"taxNumber\": \"GR123456789\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "localhost/api/calculation",
+													"host": [
+														"localhost"
+													],
+													"path": [
+														"api",
+														"calculation"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "greece-coupon(-6%)",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"product\": \"1\",\n    \"count\": \"1\",\n    \"taxNumber\": \"GR123456789\",\n    \"couponCode\": \"G25\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "localhost/api/calculation",
+													"host": [
+														"localhost"
+													],
+													"path": [
+														"api",
+														"calculation"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "greece-coupon(-5 euro)",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"product\": \"1\",\n    \"count\": \"1\",\n    \"taxNumber\": \"GR123456789\",\n    \"couponCode\": \"D15\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "localhost/api/calculation",
+													"host": [
+														"localhost"
+													],
+													"path": [
+														"api",
+														"calculation"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "validation-error",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"product\": \"\",\n    \"count\": \"\",\n    \"taxNumber\": \"\",\n    \"couponCode\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost/api/calculation",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"calculation"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "payment",
+					"item": [
+						{
+							"name": "paypal",
+							"item": [
+								{
+									"name": "paypal-success",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"paymentProcessor\": \"paypal\",\n    \"price\": \"100\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost/api/payment",
+											"host": [
+												"localhost"
+											],
+											"path": [
+												"api",
+												"payment"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "paypal-error",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"paymentProcessor\": \"paypal\",\n    \"price\": \"200\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost/api/payment",
+											"host": [
+												"localhost"
+											],
+											"path": [
+												"api",
+												"payment"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "stripe",
+							"item": [
+								{
+									"name": "stripe-success",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"paymentProcessor\": \"stripe\",\n    \"price\": \"100\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost/api/payment",
+											"host": [
+												"localhost"
+											],
+											"path": [
+												"api",
+												"payment"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "stripe-error",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"paymentProcessor\": \"stripe\",\n    \"price\": \"5\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost/api/payment",
+											"host": [
+												"localhost"
+											],
+											"path": [
+												"api",
+												"payment"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "validation-error",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"paymentProcessor\": \"\",\n    \"price\": \"0\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost/api/payment",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"payment"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

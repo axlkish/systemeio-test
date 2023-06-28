@@ -1,5 +1,9 @@
 <?php
 
+namespace App\PaymentProcessor;
+
+use Exception;
+
 class PaypalPaymentProcessor
 {
     /**

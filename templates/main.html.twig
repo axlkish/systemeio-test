@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Products</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    </head>
+    <body style="padding:30px">
+        <h1>Products</h1>
+        <form id="orderForm">
+            <table cellpadding="10">
+                <thead style="font-weight:bold">
+                    <td>Product</td>
+                    <td>Price (euro)</td>
+                    <td>Count</td>
+                </thead>
+
+                {% for product in products %}
+                <tr>
+                    <td>
+                        <input type="radio" name="product" value="{{ product.id }}"> {{ product.name }}
+                    </td>
+                    <td>{{ product.priceEuro }}</td>
+                    <td><input type="text" style="width:50px; margin-left:10px" name="count{{ product.id }}"></td>
+                </tr>
+                {% endfor %}
+            </table>
+
+            <div>
+                <h4>Country</h4>
+                <select name="tax_number">
+                    <option value=""></option>
+                    <option value="DE123456789">germany</option>
+                    <option value="IT12345678911">italy</option>
+                    <option value="GR123456789">greece</option>
+                </select>
+            </div>
+
+            <div>
+                <h4>Coupon</h4>
+                <select name="coupon">
+                    <option value=""></option>
+                    <option value="D15">D15 (- 5 euro)</option>
+                    <option value="G25">G25 (- 6 %)</option>
+                </select>
+            </div>
+
+            <div style="margin-top:20px">
+                <h1>Calculation</h1>
+                <button type="submit" name="calc">calculate</button>
+                <div style="margin-top:20px">
+                    <div>result:</div>
+                    <textarea rows="5" cols="80" readonly id="calc_result"></textarea><br>
+                </div>
+            </div>
+
+            <div style="margin-top:20px;">
+                <h1>Payment</h1>
+                <h4>Payment processor</h4>
+                <select name="processor">
+                    <option value=""></option>
+                    <option value="paypal">paypal</option>
+                    <option value="stripe">stripe</option>
+                </select><br>
+                <h4>Price</h4>
+                <input type="text" name="price" style="width:100px"><br><br>
+                <button type="submit" name="pay">pay</button>
+                <div style="margin-top:20px">
+                    <div>result:</div>
+                    <textarea rows="5" cols="80" readonly id="pay_result"></textarea><br>
+                </div>
+            </div>
+        </form>
+
+        <script>
+            document.getElementById('orderForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                let form = event.target;
+                let formData = new FormData(form);
+                let id;
+                let url;
+                let result_area;
+                let json = {};
+
+                // calculation
+                if (event.submitter.name === 'calc') {
+                    url = '/api/calculation';
+                    result_area = 'calc_result';
+
+                    for (let [name, value] of formData) {
+                        if (name === 'product') {
+                            id = value;
+                            json['product'] = id;
+                        }
+
+                        if (name === 'count'+id) {
+                            json['count'] = value;
+                        }
+
+                        if (name === 'tax_number') {
+                            json['taxNumber'] = value;
+                        }
+
+                        if (name === 'coupon' && value !== "") {
+                            json['couponCode'] = value;
+                        }
+                    }
+
+                // payment
+                } else if (event.submitter.name === 'pay') {
+                    url = '/api/payment';
+                    result_area = 'pay_result';
+
+                    for (let [name, value] of formData) {
+                        if (name === 'processor') {
+                            json['paymentProcessor'] = value;
+                        }
+
+                        if (name === 'price') {
+                            json['price'] = value;
+                        }
+                    }
+                }
+
+                // send json
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', url);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        document.getElementById(result_area).value = xhr.responseText;
+                        console.log('Success:', xhr.responseText);
+                    } else {
+                        document.getElementById(result_area).value = xhr.responseText;
+                        console.log('Error:', xhr.responseText);
+                    }
+                };
+                xhr.send(JSON.stringify(json));
+            });
+        </script>
+    </body>
+</html>

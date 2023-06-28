@@ -83,3 +83,39 @@ CRUD для сущностей писать не нужно
 - реализация задания в несколько коммитов приветствуется
 
 Мы не ограничиваем вас по срокам выполнения задания, но при этом ожидаем, что в тестовом задании вы раскроете принципы, которых придерживаетесь в работе.
+
+
+## Сборка проекта
+1. Собираем проект
+```shell
+docker compose build
+```
+
+2. Запускаем проект
+```shell
+docker compose up -d
+```
+
+3. Проверяем что все контейнеры успешно запущены
+```shell
+docker compose ps
+```
+
+4. Накатываем миграций и фикстуры в БД
+```shell
+docker exec -it systemeio-test-app bin/console doctrine:migrations:migrate -n
+docker exec -it systemeio-test-app bin/console doctrine:fixtures:load -n
+```
+
+## Tests
+```shell
+docker exec -it systemeio-test-app bin/phpunit
+```
+
+## GUI 
+<http://localhost>  
+
+## Postman
+В корне проекта файл коллекции (systemeio.postman_collection.json) для тестирования.
+
+

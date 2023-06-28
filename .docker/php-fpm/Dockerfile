@@ -28,13 +28,12 @@ RUN docker-php-ext-configure intl --enable-intl && \
     docker-php-ext-configure gd --with-freetype --with-jpeg && \
     docker-php-ext-install -j$(nproc) gd && \
     docker-php-ext-install bcmath && \
-    docker-php-ext-install pdo pdo_mysql \
-        pdo_mysql \
+    docker-php-ext-install pgsql pdo pdo_pgsql \
         intl iconv mbstring \
         zip pcntl \
         exif opcache \
     && docker-php-source delete \
-    && docker-php-ext-enable pdo_mysql
+    && docker-php-ext-enable pdo_pgsql
 
 # config php
 COPY .docker/php-fpm/php.ini "$PHP_INI_DIR/conf.d"
@@ -57,3 +56,5 @@ RUN chmod -R 777 /var/www/public
 USER www
 
 EXPOSE 9000
+
+CMD ["php-fpm", "-F"]
