@@ -101,7 +101,12 @@ docker compose up -d
 docker compose ps
 ```
 
-4. Накатываем миграций и фикстуры в БД
+4. Устанавливаем зависимости Composer
+```shell
+docker exec -it systemeio-test-app composer install
+```
+
+5. Накатываем миграций и фикстуры в БД
 ```shell
 docker exec -it systemeio-test-app bin/console doctrine:migrations:migrate -n
 docker exec -it systemeio-test-app bin/console doctrine:fixtures:load -n
